@@ -4,13 +4,13 @@ FROM node:18
 WORKDIR /app
 
 # パッケージコピー（pnpm）
-COPY ../../package.json ../../pnpm-lock.yaml ./
+COPY ../../package.json ./
 
 # apps/web 配下をコピー
 COPY . .
 
 RUN npm install -g pnpm
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 RUN pnpm build
 
 CMD ["pnpm", "start"]
